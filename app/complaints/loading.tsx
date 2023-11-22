@@ -1,11 +1,9 @@
-import { StatusBadge } from "@/app/components";
-import prisma from "@/prisma/client";
 import { Table } from "@radix-ui/themes";
-import Link from "next/link";
+import { Skeleton } from "@/app/components";
 import ComplaintButton from "./ComplaintButton";
 
-const ComplaintsPage = async () => {
-  const complaints = await prisma.complaint.findMany();
+const LoadingComplaints = () => {
+  const complaints = [1, 2, 3, 4, 5];
 
   return (
     <div>
@@ -24,20 +22,18 @@ const ComplaintsPage = async () => {
         </Table.Header>
         <Table.Body>
           {complaints.map((complaint) => (
-            <Table.Row key={complaint.id}>
+            <Table.Row key={complaint}>
               <Table.RowHeaderCell>
-                <Link href={`/complaints/${complaint.id}`} className="text-violet-600 hover:underline hover:text-violet-900">
-                  {complaint.title}
-                </Link>
+                <Skeleton />
                 <div className="block md:hidden mt-1">
-                  <StatusBadge status={complaint.status} />
+                  <Skeleton />
                 </div>
               </Table.RowHeaderCell>
               <Table.Cell className="hidden md:table-cell">
-                <StatusBadge status={complaint.status} />
+                <Skeleton />
               </Table.Cell>
               <Table.Cell className="hidden md:table-cell">
-                {complaint.createdAt.toDateString()}
+                <Skeleton />
               </Table.Cell>
             </Table.Row>
           ))}
@@ -46,4 +42,4 @@ const ComplaintsPage = async () => {
     </div>
   );
 };
-export default ComplaintsPage;
+export default LoadingComplaints;

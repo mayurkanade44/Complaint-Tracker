@@ -10,9 +10,8 @@ import { toast } from "react-toastify";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createComplaintSchema } from "@/app/validationSchema";
 import { z } from "zod";
-import ErrorMessage from "@/app/components/ErrorMessage";
 import { useState } from "react";
-import Spinner from "@/app/components/Spinner";
+import { Spinner, ErrorMessage } from "@/app/components";
 
 type ComplaintForm = z.infer<typeof createComplaintSchema>;
 
