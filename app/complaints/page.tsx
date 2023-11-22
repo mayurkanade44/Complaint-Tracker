@@ -2,7 +2,7 @@ import { StatusBadge } from "@/app/components";
 import prisma from "@/prisma/client";
 import { Table } from "@radix-ui/themes";
 import Link from "next/link";
-import ComplaintButton from "./ComplaintButton";
+import ComplaintButton from "./_components/ComplaintButton";
 
 const ComplaintsPage = async () => {
   const complaints = await prisma.complaint.findMany();
@@ -26,7 +26,10 @@ const ComplaintsPage = async () => {
           {complaints.map((complaint) => (
             <Table.Row key={complaint.id}>
               <Table.RowHeaderCell>
-                <Link href={`/complaints/${complaint.id}`} className="text-violet-600 hover:underline hover:text-violet-900">
+                <Link
+                  href={`/complaints/${complaint.id}`}
+                  className="text-violet-600 hover:underline hover:text-violet-900"
+                >
                   {complaint.title}
                 </Link>
                 <div className="block md:hidden mt-1">
@@ -46,4 +49,7 @@ const ComplaintsPage = async () => {
     </div>
   );
 };
+
+export const dynamic = "force-dynamic";
+
 export default ComplaintsPage;

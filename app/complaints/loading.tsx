@@ -1,6 +1,6 @@
 import { Table } from "@radix-ui/themes";
 import { Skeleton } from "@/app/components";
-import ComplaintButton from "./ComplaintButton";
+import ComplaintButton from "./_components/ComplaintButton";
 
 const LoadingComplaints = () => {
   const complaints = [1, 2, 3, 4, 5];
