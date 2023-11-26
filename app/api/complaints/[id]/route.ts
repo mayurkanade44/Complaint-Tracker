@@ -34,10 +34,7 @@ export async function PATCH(
   return NextResponse.json(updatedComplaint);
 }
 
-export async function DELETE(
-  req: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function DELETE({ params }: { params: { id: string } }) {
   const complaint = await prisma.complaint.findUnique({
     where: { id: parseInt(params.id) },
   });
